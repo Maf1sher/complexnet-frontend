@@ -23,7 +23,7 @@ export function Login() {
         const form = e.target;
         const formData = new FormData(form);
         const formJson = Object.fromEntries(formData.entries());
-
+        console.log(formJson);
         const email = formJson.email;
         const password = formJson.password;
         // const formJson = Object.fromEntries(formData.entries());
@@ -69,33 +69,40 @@ export function Login() {
             .catch(e => console.log(e)));
     }
 
-    function logout() {
-        localStorage.removeItem('token');
-    }
-
 
     // const errors = errorMsg.map(erorr => <p> {erorr}</p>)
 
     return (
         <>
             <NavBar />
-
-            <div className="container vh-100">
-                <div className="row d-flex justify-content-center align-items-center h-100">
-                    <div className="col-12 col-md-8 col-lg-6 col-xl-5">
-                        <div className="card d-flex align-items-center" data-bs-theme="dark">
-                            <div className="card-body">
-                                <h2 className="">Login</h2>
-                                <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"></input>
-                                    <label for="floatingInput" className="">Email address</label>
+            <form action="postDto" onSubmit={handleSubmit}>
+                <div className="container vh-100">
+                    <div className="row d-flex justify-content-center align-items-center h-100">
+                        <div className="col-12 col-md-8 col-lg-6 col-xl-5">
+                            <div className="card d-flex align-items-center" data-bs-theme="dark">
+                                <div className="card-body">
+                                    <h2 className="d-flex justify-content-center pt-5">Login</h2>
+                                    <p class="text-white-50 mb-5">Please enter your login and password!</p>
+                                    <div class="form-floating mb-3">
+                                        <input type="email" class="form-control" id="email" placeholder="name@example.com" name="email"></input>
+                                        <label for="email" className="">Email</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="password" class="form-control" id="password" placeholder="password" name="password"></input>
+                                        <label for="password" className="">Password</label>
+                                    </div>
+                                </div>
+                                <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
+                                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+                                <div className="pt-5 pb-5">
+                                    <p class="mb-0">Don't have an account? <a href="#!" class="text-white-50 fw-bold">Sign Up</a></p>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
+
 
             {/* <form action="postDto" onSubmit={handleSubmit}>
                 <div className="container-fluid card login-container w-50">

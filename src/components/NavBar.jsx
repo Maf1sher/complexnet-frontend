@@ -10,6 +10,9 @@ function NavBar() {
 
     // }, [auth])
 
+    function logout() {
+        localStorage.removeItem('token');
+    }
 
     return (
         <div className="navbar navbar-expand navbar-dark bg-dark">
@@ -21,9 +24,10 @@ function NavBar() {
                     </li>
                 </ul>
                 {
-                    auth?.fullName ? <span className="navbar-text">zalogowany</span> :
+                    // auth?.fullName ? <span className="navbar-text"><button className="btn" onClick={logout}>Logout</button></span> :
+                    auth?.fullName ? <button className="btn btn-outline-danger" onClick={logout}>Logout</button> :
                     // <a className="btn btn-primary" >Login</a>
-                    <Link to="/login" className="btn btn-primary"> Login </Link>
+                    <Link to="/login" className="btn btn-outline-success"> Login </Link>
                 }
                 
             </div>
