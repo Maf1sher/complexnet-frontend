@@ -28,7 +28,6 @@ export function Login() {
         const password = formJson.password;
         // const formJson = Object.fromEntries(formData.entries());
         // console.log(formJson);
-
         api.authenticate({ email, password })
             .then(response => {
                 console.log('Authentication successful:', response);
@@ -40,7 +39,7 @@ export function Login() {
 
                 localStorage.setItem("token", token);
                 console.log("auth", auth);
-                navigate(-1);
+                navigate("/");
             })
             .catch(error => {
                 console.log(error);
@@ -95,7 +94,7 @@ export function Login() {
                                 <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
                                 <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
                                 <div className="pt-5 pb-5">
-                                    <p class="mb-0">Don't have an account? <a href="#!" class="text-white-50 fw-bold">Sign Up</a></p>
+                                    <p class="mb-0">Don't have an account? <Link to="/register" className="text-white-50 fw-bold">Sign Up</Link></p>
                                 </div>
                             </div>
                         </div>
@@ -138,5 +137,5 @@ export function Login() {
         </>
 
 
-    )
+    );
 }
