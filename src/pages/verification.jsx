@@ -1,13 +1,16 @@
 import VerificationInput from "react-verification-input";
 import { AuthenticationApi } from "../api/api";
 import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export function Verification() {
     const api = new AuthenticationApi;
+    const navigate = useNavigate();
     function complete(code){
         api.confirm(code)
         .then(response => {
-            window.location.href = "/login"
+            // window.location.href = "/login"
+            navigate("/login");
         })
         .catch(error => {
             console.log(error);

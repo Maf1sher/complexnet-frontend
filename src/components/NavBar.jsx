@@ -1,9 +1,12 @@
 import { useEffect } from "react";
 import useAuth from "../hooks/useAuth";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { writeStorage, deleteFromStorage } from '@rehooks/local-storage';
+
 
 function NavBar() {
-
+    const navigate = useNavigate();
     const { auth } = useAuth();
 
     // useEffect({
@@ -11,7 +14,9 @@ function NavBar() {
     // }, [auth])
 
     function logout() {
-        localStorage.removeItem('token');
+        // localStorage.removeItem('token');
+        deleteFromStorage('token');
+        navigate("/login");
     }
 
     return (
